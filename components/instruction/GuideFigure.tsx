@@ -5,6 +5,7 @@ import Image from "next/image";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Chip from "@mui/material/Chip";
+import ArrowUpward from "@mui/icons-material/ArrowUpward";
 import type { LightboxImage } from "./types";
 
 const wrapSx = {
@@ -12,6 +13,7 @@ const wrapSx = {
   overflow: "hidden" as const,
   bgcolor: "grey.100",
   cursor: "pointer" as const,
+  position: "relative" as const,
   "&:focus-visible": { outline: "2px solid", outlineColor: "primary.main" },
 };
 
@@ -21,6 +23,10 @@ export type GuideFigureProps = {
   step?: number;
   caption?: string;
   priority?: boolean;
+  showRouteArrow?: boolean;
+  routeArrowRotateDeg?: number;
+  routeArrowLeftPct?: number;
+  routeArrowBottomPct?: number;
 };
 
 export function GuideFigure({
@@ -29,6 +35,10 @@ export function GuideFigure({
   step,
   caption,
   priority,
+  showRouteArrow,
+  routeArrowRotateDeg = 0,
+  routeArrowLeftPct = 50,
+  routeArrowBottomPct = 20,
 }: GuideFigureProps) {
   const open = React.useCallback(() => {
     onOpen(image);
@@ -84,6 +94,23 @@ export function GuideFigure({
             pointerEvents: "none",
           }}
         />
+        {showRouteArrow ? (
+          <Box
+            aria-hidden
+            sx={{
+              position: "absolute",
+              left: `${routeArrowLeftPct}%`,
+              bottom: `${routeArrowBottomPct}%`,
+              transform: `translateX(-50%) rotate(${routeArrowRotateDeg}deg)`,
+              pointerEvents: "none",
+              lineHeight: 0,
+              color: "common.white",
+              filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.85))",
+            }}
+          >
+            <ArrowUpward sx={{ fontSize: { xs: 48, sm: 56 }, opacity: 0.92 }} />
+          </Box>
+        ) : null}
       </Box>
     </Box>
   );

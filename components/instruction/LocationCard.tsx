@@ -8,9 +8,13 @@ import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Map from "@mui/icons-material/Map";
 import Place from "@mui/icons-material/Place";
-import { MAPS_URL } from "./constants";
 
-export function LocationCard() {
+export type LocationCardProps = {
+  address: string;
+  mapsUrl: string;
+};
+
+export function LocationCard({ address, mapsUrl }: LocationCardProps) {
   return (
     <Card sx={{ mb: 3 }}>
       <CardContent>
@@ -27,7 +31,7 @@ export function LocationCard() {
                 Адреса
               </Typography>
               <Typography variant="h6" fontWeight={600}>
-                вул. Каманіна, 16а
+                {address}
               </Typography>
             </Box>
           </Stack>
@@ -35,7 +39,7 @@ export function LocationCard() {
             variant="contained"
             size="large"
             startIcon={<Map />}
-            href={MAPS_URL}
+            href={mapsUrl}
             target="_blank"
             rel="noopener noreferrer"
             sx={{ alignSelf: { xs: "stretch", sm: "center" } }}

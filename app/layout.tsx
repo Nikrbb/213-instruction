@@ -11,9 +11,8 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Заселення · квартира 213",
-  description:
-    "Інструкція з заселення: час, адреса, маршрут, ключі та Wi‑Fi.",
+  title: "Заселення",
+  description: "Інструкції з заселення: час, адреса, маршрут, ключі та Wi‑Fi.",
 };
 
 export default function RootLayout({

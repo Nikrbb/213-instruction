@@ -9,7 +9,28 @@ import Apartment from "@mui/icons-material/Apartment";
 import Shield from "@mui/icons-material/Shield";
 import Lock from "@mui/icons-material/Lock";
 
-export function StepThreeKeysCard() {
+export type StepThreeKeysCardProps = {
+  residenceName: string;
+  paradeName: string;
+  securityInstruction: string;
+  securityInstructionNoGuard?: string;
+  lockerCode: string;
+  lockerHint: string;
+  closing: string;
+};
+
+export function StepThreeKeysCard({
+  residenceName,
+  paradeName,
+  securityInstruction,
+  securityInstructionNoGuard,
+  lockerCode,
+  lockerHint,
+  closing,
+}: StepThreeKeysCardProps) {
+  const hasBuilding = residenceName.length > 0 && paradeName.length > 0;
+  const hasLocker = lockerCode.length > 0;
+
   return (
     <Card sx={{ border: 2, borderColor: "primary.light" }}>
       <CardContent>
@@ -25,40 +46,53 @@ export function StepThreeKeysCard() {
             Будинок і ключі
           </Typography>
         </Stack>
-        <Typography variant="body1" paragraph>
-          У нас <strong>27 Перлина</strong>, <strong>1-ша парадна</strong> (як на останньому фото вище).
-        </Typography>
+        {hasBuilding ? (
+          <Typography variant="body1" paragraph>
+            У нас <strong>{residenceName}</strong>, <strong>{paradeName}</strong> (як на останньому фото
+            маршруту вище).
+          </Typography>
+        ) : (
+          <Typography variant="body1" color="text.secondary" paragraph>
+            Дані про будинок і парадну додамо разом із фото маршруту.
+          </Typography>
+        )}
         <Stack spacing={1.5} sx={{ mb: 2 }}>
           <Stack direction="row" spacing={1} alignItems="flex-start">
             <Shield color="action" sx={{ mt: 0.25 }} />
-            <Typography variant="body1">
-              На охороні попросіть підняти вас у{" "}
-              <strong>апартаменти 213 на 22-му поверсі</strong>.
-            </Typography>
+            <Stack spacing={1}>
+              <Typography variant="body1">{securityInstruction}</Typography>
+              {securityInstructionNoGuard?.trim() ? (
+                <Typography variant="body1" color="text.secondary">
+                  {securityInstructionNoGuard}
+                </Typography>
+              ) : null}
+            </Stack>
           </Stack>
-          <Stack
-            direction="row"
-            spacing={1}
-            alignItems="center"
-            flexWrap="wrap"
-            useFlexGap
-          >
-            <Lock color="action" />
-            <Typography variant="body1" component="span">
-              Біля квартири є локер (сейф). Код:
-            </Typography>
-            <Chip
-              label="1213"
-              color="secondary"
-              sx={{ fontWeight: 700, fontSize: "1rem" }}
-            />
-          </Stack>
+          {hasLocker ? (
+            <Stack
+              direction="row"
+              spacing={1}
+              alignItems="center"
+              flexWrap="wrap"
+              useFlexGap
+            >
+              <Lock color="action" />
+              <Typography variant="body1" component="span">
+                Біля квартири є локер (сейф). Код:
+              </Typography>
+              <Chip
+                label={lockerCode}
+                color="secondary"
+                sx={{ fontWeight: 700, fontSize: "1rem" }}
+              />
+            </Stack>
+          ) : null}
           <Typography variant="body1" color="text.secondary">
-            Введіть код, відчиніть локер, беріть ключі та заходьте в квартиру.
+            {lockerHint}
           </Typography>
         </Stack>
         <Typography variant="body1" fontWeight={500} color="primary">
-          Гарного відпочинку!
+          {closing}
         </Typography>
       </CardContent>
     </Card>

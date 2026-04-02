@@ -1,6 +1,1 @@
-export type LightboxImage = {
-  src: string;
-  alt: string;
-  width: number;
-  height: number;
-};
+export type { LightboxImage } from "@/lib/instruction-types";

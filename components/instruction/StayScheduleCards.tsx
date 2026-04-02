@@ -8,7 +8,19 @@ import Grid from "@mui/material/Grid";
 import AccessTime from "@mui/icons-material/AccessTime";
 import Event from "@mui/icons-material/Event";
 
-export function StayScheduleCards() {
+export type StayScheduleCardsProps = {
+  checkInTime: string;
+  checkInDetail: string;
+  checkOutTime: string;
+  checkOutDetail: string;
+};
+
+export function StayScheduleCards({
+  checkInTime,
+  checkInDetail,
+  checkOutTime,
+  checkOutDetail,
+}: StayScheduleCardsProps) {
   return (
     <Grid container spacing={2} sx={{ mb: 3 }}>
       <Grid size={{ xs: 12, sm: 6 }}>
@@ -21,10 +33,10 @@ export function StayScheduleCards() {
               </Typography>
             </Stack>
             <Typography variant="h5" color="primary" fontWeight={700}>
-              з 14:00
+              {checkInTime}
             </Typography>
             <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
-              Заселення починається о 14:00.
+              {checkInDetail}
             </Typography>
           </CardContent>
         </Card>
@@ -39,10 +51,10 @@ export function StayScheduleCards() {
               </Typography>
             </Stack>
             <Typography variant="h5" color="primary" fontWeight={700}>
-              до 12:00
+              {checkOutTime}
             </Typography>
             <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
-              Будь ласка, звільніть квартиру до полудня.
+              {checkOutDetail}
             </Typography>
           </CardContent>
         </Card>

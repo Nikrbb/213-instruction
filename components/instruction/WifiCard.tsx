@@ -19,13 +19,14 @@ import Snackbar from "@mui/material/Snackbar";
 import Wifi from "@mui/icons-material/Wifi";
 import QrCode2 from "@mui/icons-material/QrCode2";
 import ContentCopy from "@mui/icons-material/ContentCopy";
-import {
-  WIFI_SSID,
-  WIFI_PASSWORD,
-  getWifiQrPayload,
-} from "./constants";
+import { getWifiQrPayload } from "@/lib/wifi-qr";
 
-export function WifiCard() {
+export type WifiCardProps = {
+  ssid: string;
+  password: string;
+};
+
+export function WifiCard({ ssid, password }: WifiCardProps) {
   const [open, setOpen] = React.useState(false);
   const [snack, setSnack] = React.useState<string | null>(null);
 
@@ -38,7 +39,7 @@ export function WifiCard() {
     }
   }, []);
 
-  const qrValue = React.useMemo(() => getWifiQrPayload(), []);
+  const qrValue = React.useMemo(() => getWifiQrPayload(ssid, password), [ssid, password]);
 
   return (
     <>
@@ -57,7 +58,7 @@ export function WifiCard() {
                   Назва мережі (SSID)
                 </Typography>
                 <Typography variant="h6" fontWeight={700} sx={{ wordBreak: "break-all" }}>
-                  {WIFI_SSID}
+                  {ssid}
                 </Typography>
               </Paper>
             </Grid>
@@ -67,7 +68,7 @@ export function WifiCard() {
                   Пароль
                 </Typography>
                 <Typography variant="h6" fontWeight={700} sx={{ wordBreak: "break-all" }}>
-                  {WIFI_PASSWORD}
+                  {password}
                 </Typography>
               </Paper>
             </Grid>
@@ -93,7 +94,7 @@ export function WifiCard() {
             <Alert severity="info">
               Сайт у браузері не може сам знайти мережі чи ввести пароль у системі — це обмеження
               безпеки. Відскануйте QR стандартною камерою телефона: з’явиться запрошення підключитися
-              до «{WIFI_SSID}».
+              до «{ssid}».
             </Alert>
             <Box sx={{ display: "flex", justifyContent: "center", py: 1 }}>
               <Paper variant="outlined" sx={{ p: 2, bgcolor: "background.paper" }}>
@@ -108,7 +109,7 @@ export function WifiCard() {
                 fullWidth
                 variant="outlined"
                 startIcon={<ContentCopy />}
-                onClick={() => copy("SSID", WIFI_SSID)}
+                onClick={() => copy("SSID", ssid)}
               >
                 Копіювати назву
               </Button>
@@ -116,7 +117,7 @@ export function WifiCard() {
                 fullWidth
                 variant="outlined"
                 startIcon={<ContentCopy />}
-                onClick={() => copy("Пароль", WIFI_PASSWORD)}
+                onClick={() => copy("Пароль", password)}
               >
                 Копіювати пароль
               </Button>
