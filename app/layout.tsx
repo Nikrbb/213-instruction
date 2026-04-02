@@ -10,9 +10,20 @@ const roboto = Roboto({
   variable: "--font-roboto",
 });
 
+const metadataBase =
+  process.env.NEXT_PUBLIC_SITE_URL != null && process.env.NEXT_PUBLIC_SITE_URL.length > 0
+    ? new URL(process.env.NEXT_PUBLIC_SITE_URL)
+    : new URL("http://localhost:3000");
+
 export const metadata: Metadata = {
+  metadataBase,
   title: "Заселення",
   description: "Інструкції з заселення: час, адреса, маршрут, ключі та Wi‑Fi.",
+  openGraph: {
+    siteName: "Заселення",
+    locale: "uk_UA",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
