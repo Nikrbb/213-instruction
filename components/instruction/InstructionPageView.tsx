@@ -10,7 +10,6 @@ import { InstructionAppBar } from "./InstructionAppBar";
 import { WelcomeHero } from "./WelcomeHero";
 import { StayScheduleCards } from "./StayScheduleCards";
 import { HouseRulesCard } from "./HouseRulesCard";
-import { LocationCard } from "./LocationCard";
 import { GuideStepsSection } from "./GuideStepsSection";
 import { WifiCard } from "./WifiCard";
 import type { LightboxImage } from "./types";
@@ -33,7 +32,12 @@ export function InstructionPageView({ data }: InstructionPageViewProps) {
   return (
     <>
       <PhotoLightbox image={lightbox} onClose={() => setLightbox(null)} />
-      <InstructionAppBar title={data.appBar.title} subtitle={data.appBar.subtitle} />
+      <InstructionAppBar
+        title={data.appBar.title}
+        subtitle={data.appBar.subtitle}
+        address={data.locationAddress}
+        mapsUrl={data.mapsUrl}
+      />
       <Box
         sx={{
           background: (t) =>
@@ -51,7 +55,6 @@ export function InstructionPageView({ data }: InstructionPageViewProps) {
             checkOutDetail={data.schedule.checkOutDetail}
           />
           <HouseRulesCard />
-          <LocationCard address={data.locationAddress} mapsUrl={data.mapsUrl} />
           <GuideStepsSection guide={guide} onOpenPhoto={setLightbox} />
           <WifiCard ssid={data.wifi.ssid} password={data.wifi.password} />
           <Typography variant="body2" color="text.secondary" textAlign="center" sx={{ mt: 4 }}>

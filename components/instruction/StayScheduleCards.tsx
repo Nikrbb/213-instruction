@@ -22,38 +22,38 @@ export function StayScheduleCards({
   checkOutDetail,
 }: StayScheduleCardsProps) {
   return (
-    <Grid container spacing={2} sx={{ mb: 3 }}>
-      <Grid size={{ xs: 12, sm: 6 }}>
+    <Grid container spacing={{ xs: 1.5, sm: 2 }} sx={{ mb: 3 }}>
+      <Grid size={6}>
         <Card sx={{ height: "100%" }}>
-          <CardContent>
-            <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 1.5 }}>
-              <AccessTime color="primary" />
-              <Typography variant="subtitle1" fontWeight={600}>
+          <CardContent sx={{ p: { xs: 1.5, sm: 2 }, "&:last-child": { pb: { xs: 1.5, sm: 2 } } }}>
+            <Stack direction="row" alignItems="center" spacing={0.75} sx={{ mb: 1 }}>
+              <AccessTime color="primary" fontSize="small" />
+              <Typography variant="subtitle2" fontWeight={600}>
                 Час заїзду
               </Typography>
             </Stack>
-            <Typography variant="h5" color="primary" fontWeight={700}>
+            <Typography variant="h6" color="primary" fontWeight={700}>
               {checkInTime}
             </Typography>
-            <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+            <Typography variant="caption" color="text.secondary" sx={{ mt: 0.5, display: "block" }}>
               {checkInDetail}
             </Typography>
           </CardContent>
         </Card>
       </Grid>
-      <Grid size={{ xs: 12, sm: 6 }}>
+      <Grid size={6}>
         <Card sx={{ height: "100%" }}>
-          <CardContent>
-            <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 1.5 }}>
-              <Event color="primary" />
-              <Typography variant="subtitle1" fontWeight={600}>
+          <CardContent sx={{ p: { xs: 1.5, sm: 2 }, "&:last-child": { pb: { xs: 1.5, sm: 2 } } }}>
+            <Stack direction="row" alignItems="center" spacing={0.75} sx={{ mb: 1 }}>
+              <Event color="primary" fontSize="small" />
+              <Typography variant="subtitle2" fontWeight={600}>
                 Час виїзду
               </Typography>
             </Stack>
-            <Typography variant="h5" color="primary" fontWeight={700}>
+            <Typography variant="h6" color="primary" fontWeight={700}>
               {checkOutTime}
             </Typography>
-            <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+            <Typography variant="caption" color="text.secondary" sx={{ mt: 0.5, display: "block" }}>
               {checkOutDetail}
             </Typography>
           </CardContent>

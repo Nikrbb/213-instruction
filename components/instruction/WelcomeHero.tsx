@@ -10,26 +10,26 @@ export function WelcomeHero() {
     <Paper
       elevation={0}
       sx={{
-        p: { xs: 2.5, sm: 4 },
-        mb: 3,
-        borderRadius: 3,
+        px: { xs: 1.75, sm: 2.5 },
+        py: { xs: 1.25, sm: 1.75 },
+        mb: 2,
+        borderRadius: 2,
         background:
           "linear-gradient(135deg, rgba(21,101,192,0.08) 0%, rgba(255,255,255,0.95) 100%)",
         border: 1,
         borderColor: "divider",
       }}
     >
-      <Stack direction="row" alignItems="flex-start" spacing={1} sx={{ mb: 1 }}>
-        <Favorite sx={{ color: "error.light", mt: 0.25 }} />
-        <Typography variant="h4" component="h1" fontWeight={600}>
+      <Stack direction="row" alignItems="center" spacing={1}>
+        <Favorite sx={{ color: "error.light", fontSize: 18 }} />
+        <Typography variant="subtitle1" component="h1" fontWeight={600}>
           Добрий день
         </Typography>
       </Stack>
       <Typography
-        variant="h6"
+        variant="body2"
         color="text.secondary"
-        fontWeight={400}
-        sx={{ pl: { xs: 0, sm: 4 } }}
+        sx={{ mt: 0.25, pl: 3.25 }}
       >
         Дякуємо, що забронювали наші апартаменти
       </Typography>
