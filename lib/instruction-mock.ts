@@ -209,7 +209,7 @@ const MOCK_150: InstructionDTO = {
     title: "Заселення · квартира 150",
     subtitle: "20 поверх · 8 Перлина · 1-ша парадна",
   },
-  mapsUrl: "https://maps.app.goo.gl/wC5sVAp8nVs9FH4f7",
+  mapsUrl: "https://maps.app.goo.gl/j64MbbRTtrCa9UbV6",
   locationAddress: "Французький бульвар, 60Б, Одеса",
   wifi: { ssid: "150", password: "56042542" },
   schedule: {
