@@ -31,10 +31,27 @@ const GATE_IMAGE_KAMANINA: LightboxImage = {
 };
 
 const GATE_IMAGE_FRANCUZSKY: LightboxImage = {
-  src: "/guide/francuzsky/gate.png",
+  src: "/guide/francuzsky/gate.jpeg",
   alt: "В'їзд у двір на Французькому бульварі, 60Б: КПП із шлагбаумом, знак STOP та хвіртка з домофоном",
   width: 5712,
   height: 4284,
+};
+
+// Dedicated 1200x630 Open Graph previews. The in-page gate photos are 4-7 MB —
+// far past what Telegram (~5 MB) and WhatsApp (~1 MB) will fetch for a link
+// preview, so sharing a link rendered no image at all.
+const OG_IMAGE_KAMANINA: LightboxImage = {
+  src: "/og/kamanina.jpg",
+  alt: GATE_IMAGE_KAMANINA.alt,
+  width: 1200,
+  height: 630,
+};
+
+const OG_IMAGE_FRANCUZSKY: LightboxImage = {
+  src: "/og/francuzsky.jpg",
+  alt: GATE_IMAGE_FRANCUZSKY.alt,
+  width: 1200,
+  height: 630,
 };
 
 const MOCK_213: InstructionDTO = {
@@ -43,6 +60,7 @@ const MOCK_213: InstructionDTO = {
     title: "Заселення · квартира 213",
     description:
       "Інструкція з заселення: час, адреса, маршрут, ключі та Wi‑Fi.",
+    ogImage: OG_IMAGE_KAMANINA,
   },
   appBar: {
     title: "Заселення · квартира 213",
@@ -134,6 +152,7 @@ const MOCK_384: InstructionDTO = {
   metadata: {
     title: "Заселення · квартира 384",
     description: "Інструкція з заселення: час, адреса, маршрут, ключі та Wi‑Fi.",
+    ogImage: OG_IMAGE_KAMANINA,
   },
   appBar: {
     title: "Заселення · квартира 384",
@@ -204,6 +223,7 @@ const MOCK_150: InstructionDTO = {
   metadata: {
     title: "Заселення · квартира 150",
     description: "Інструкція з заселення: час, адреса, маршрут, ключі та Wi‑Fi.",
+    ogImage: OG_IMAGE_FRANCUZSKY,
   },
   appBar: {
     title: "Заселення · квартира 150",
@@ -225,25 +245,25 @@ const MOCK_150: InstructionDTO = {
     bullets: [],
     photos: [
       {
-        src: "/guide/apt150/route-01.png",
+        src: "/guide/apt150/route-01.jpeg",
         alt: "Маршрут до 1-ї парадної ЖК 8 Перлина, крок 1",
         width: 5712,
         height: 4284,
       },
       {
-        src: "/guide/apt150/route-02.png",
+        src: "/guide/apt150/route-02.jpeg",
         alt: "Маршрут до 1-ї парадної ЖК 8 Перлина, крок 2",
         width: 5712,
         height: 4284,
       },
       {
-        src: "/guide/apt150/route-03.png",
+        src: "/guide/apt150/route-03.jpeg",
         alt: "Маршрут до 1-ї парадної ЖК 8 Перлина, крок 3",
         width: 5712,
         height: 4284,
       },
       {
-        src: "/guide/apt150/route-04.png",
+        src: "/guide/apt150/route-04.jpeg",
         alt: "Маршрут до 1-ї парадної ЖК 8 Перлина, крок 4",
         width: 5712,
         height: 4284,

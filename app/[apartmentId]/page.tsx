@@ -28,10 +28,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: `/${apartmentId}`,
       images: [
         {
-          url: data.guideStep1.src,
-          width: data.guideStep1.width,
-          height: data.guideStep1.height,
-          alt: data.guideStep1.alt,
+          url: data.metadata.ogImage.src,
+          width: data.metadata.ogImage.width,
+          height: data.metadata.ogImage.height,
+          alt: data.metadata.ogImage.alt,
         },
       ],
     },
@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: data.metadata.title,
       description: data.metadata.description,
-      images: [data.guideStep1.src],
+      images: [data.metadata.ogImage.src],
     },
   };
 }

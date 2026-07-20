@@ -15,7 +15,7 @@ export type CourtyardPhoto = LightboxImage & {
 
 export type InstructionDTO = {
   apartmentId: string;
-  metadata: { title: string; description: string };
+  metadata: { title: string; description: string; ogImage: LightboxImage };
   appBar: { title: string; subtitle: string };
   mapsUrl: string;
   locationAddress: string;
