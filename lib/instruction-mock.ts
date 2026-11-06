@@ -147,6 +147,38 @@ const MOCK_213: InstructionDTO = {
   },
 };
 
+// Same building and entrance as 213, so the route photos are shared.
+// No locker yet: the apartment is left open with the keys inside.
+const MOCK_115: InstructionDTO = {
+  apartmentId: "115",
+  metadata: {
+    title: "Заселення · квартира 115",
+    description: "Інструкція з заселення: час, адреса, маршрут, ключі та Wi‑Fi.",
+    ogImage: OG_IMAGE_KAMANINA,
+  },
+  appBar: {
+    title: "Заселення · квартира 115",
+    subtitle: "12 поверх · Перлина 27 · 1-ша парадна",
+  },
+  mapsUrl: MOCK_213.mapsUrl,
+  locationAddress: MOCK_213.locationAddress,
+  wifi: { ssid: "115", password: "Odessa_115" },
+  schedule: MOCK_213.schedule,
+  guideStep1: GATE_IMAGE_KAMANINA,
+  guideStep2: MOCK_213.guideStep2,
+  guideStep3: {
+    residenceName: "27 Перлина",
+    paradeName: "1-ша парадна",
+    securityInstruction:
+      "Зверніться на пост охорони й попросіть доставити вас до апартаментів 115 на 12-му поверсі.",
+    securityInstructionNoGuard:
+      "Якщо пост порожній — пройдіть до ліфта, натисніть кнопку виклику та повідомте диспетчера, що заселяєтесь у квартиру 115. Вам відкриють доступ і піднімуть на поверх.",
+    lockerCode: "",
+    lockerHint: "Квартира відчинена, ключі чекають на вас усередині — просто заходьте.",
+    closing: "Гарного відпочинку!",
+  },
+};
+
 const MOCK_384: InstructionDTO = {
   apartmentId: "384",
   metadata: {
@@ -284,6 +316,7 @@ const MOCK_150: InstructionDTO = {
 };
 
 const BY_ID: Record<string, InstructionDTO> = {
+  "115": MOCK_115,
   "150": MOCK_150,
   "213": MOCK_213,
   "384": MOCK_384,

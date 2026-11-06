@@ -54,7 +54,7 @@ export function InstructionPageView({ data }: InstructionPageViewProps) {
             checkOutTime={data.schedule.checkOutTime}
             checkOutDetail={data.schedule.checkOutDetail}
           />
-          <HouseRulesCard />
+          <HouseRulesCard hasLocker={data.guideStep3.lockerCode.length > 0} />
           <GuideStepsSection guide={guide} onOpenPhoto={setLightbox} />
           <WifiCard ssid={data.wifi.ssid} password={data.wifi.password} />
           <Typography variant="body2" color="text.secondary" textAlign="center" sx={{ mt: 4 }}>

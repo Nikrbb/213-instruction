@@ -14,6 +14,7 @@ import SavingsRounded from "@mui/icons-material/SavingsRounded";
 import GroupRounded from "@mui/icons-material/GroupRounded";
 import PersonRounded from "@mui/icons-material/PersonRounded";
 import PriceCheckRounded from "@mui/icons-material/PriceCheckRounded";
+import KeyRounded from "@mui/icons-material/KeyRounded";
 
 type Step = {
   icon: React.ReactNode;
@@ -41,6 +42,12 @@ const ARRIVAL_STEPS: Step[] = [
   },
 ];
 
+const DEPOSIT_RETURN_STEP: Step = {
+  icon: <PriceCheckRounded fontSize="small" />,
+  title: "Повернення застави",
+  detail: "Протягом 12 годин після виїзду — на карту.",
+};
+
 const DEPARTURE_STEPS: Step[] = [
   {
     icon: <GroupRounded fontSize="small" />,
@@ -54,11 +61,18 @@ const DEPARTURE_STEPS: Step[] = [
     detail:
       "Покладіть ключі у локер → у вантажному ліфті натисніть дзвінок і скажіть диспетчеру що виїжджаєте з подобової — охорона має вас спустити.",
   },
+  DEPOSIT_RETURN_STEP,
+];
+
+// Apartments without a locker: guests leave the keys inside.
+const DEPARTURE_STEPS_NO_LOCKER: Step[] = [
   {
-    icon: <PriceCheckRounded fontSize="small" />,
-    title: "Повернення застави",
-    detail: "Протягом 12 годин після виїзду — на карту.",
+    icon: <KeyRounded fontSize="small" />,
+    title: "Залиште ключі в квартирі",
+    detail:
+      "Залиште ключі в квартирі й зачиніть двері → у вантажному ліфті натисніть дзвінок і скажіть диспетчеру, що виїжджаєте з подобової — охорона має вас спустити.",
   },
+  DEPOSIT_RETURN_STEP,
 ];
 
 function StepRow({ step }: { step: Step }) {
@@ -148,7 +162,7 @@ function Section({
   );
 }
 
-export function HouseRulesCard() {
+export function HouseRulesCard({ hasLocker = true }: { hasLocker?: boolean }) {
   return (
     <Card sx={{ mb: 3 }}>
       <CardContent sx={{ p: { xs: 2, sm: 2.5 }, "&:last-child": { pb: { xs: 2, sm: 2.5 } } }}>
@@ -166,7 +180,7 @@ export function HouseRulesCard() {
           <Section
             label="При виїзді"
             icon={<LogoutRounded fontSize="small" />}
-            steps={DEPARTURE_STEPS}
+            steps={hasLocker ? DEPARTURE_STEPS : DEPARTURE_STEPS_NO_LOCKER}
             accent="warning"
           />
         </Stack>
